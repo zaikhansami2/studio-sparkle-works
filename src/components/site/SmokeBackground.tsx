@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 export function SmokeBackground() {
   useEffect(() => {
-    // Load once
     if (document.getElementById("samia-smoke-script")) return;
     const s = document.createElement("script");
     s.id = "samia-smoke-script";
@@ -14,7 +13,7 @@ export function SmokeBackground() {
   return (
     <canvas
       id="samia-smoke-canvas"
-      className="pointer-events-none fixed inset-0 -z-10 h-full w-full opacity-70"
+      className="pointer-events-none fixed inset-0 -z-10 h-full w-full bg-black"
       aria-hidden
     />
   );
