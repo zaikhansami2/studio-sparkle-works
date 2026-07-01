@@ -40,7 +40,7 @@ export function ClientsGrid() {
       </div>
 
       <div className="relative mt-12 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-clients-marquee">
+        <div className="marquee-track flex w-max">
           {loop.map((n, i) => (
             <Card key={`${n}-${i}`} name={n} i={i % CLIENTS.length} />
           ))}
