@@ -509,10 +509,17 @@ window.addEventListener("mousemove", function (e) {
   pointers[0].down = true;
   pointers[0].color = colorArr;
   pointers[0].moved = pointers[0].down;
-  pointers[0].dx = (e.offsetX - pointers[0].x) * 10.0;
-  pointers[0].dy = (e.offsetY - pointers[0].y) * 10.0;
-  pointers[0].x = e.offsetX;
-  pointers[0].y = e.offsetY;
+  {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+    pointers[0].dx = (x - pointers[0].x) * 10.0;
+    pointers[0].dy = (y - pointers[0].y) * 10.0;
+    pointers[0].x = x;
+    pointers[0].y = y;
+  }
 });
 
 window.addEventListener(
