@@ -495,7 +495,7 @@ function resizeCanvas() {
 let count = 0;
 let colorArr = [Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2];
 
-canvas.addEventListener("mousemove", function (e) {
+window.addEventListener("mousemove", function (e) {
   count++;
 
   count > 25 &&
@@ -515,7 +515,7 @@ canvas.addEventListener("mousemove", function (e) {
   pointers[0].y = e.offsetY;
 });
 
-canvas.addEventListener(
+window.addEventListener(
   "touchmove",
   function (e) {
     e.preventDefault();
