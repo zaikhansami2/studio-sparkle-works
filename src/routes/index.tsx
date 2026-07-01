@@ -20,8 +20,8 @@ function Home() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
       <VideoLoop />
+      <Hero />
       <StatsCounter />
       <TypingHeadline />
       <ServicesMarquee />

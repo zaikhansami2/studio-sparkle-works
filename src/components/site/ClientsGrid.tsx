@@ -5,7 +5,27 @@ const CLIENTS = [
   "Kinetic Sports", "Harbor Tea", "Sequoia Legal",
 ];
 
+function Card({ name, i }: { name: string; i: number }) {
+  const initials = name.split(" ").map((s) => s[0]).join("").slice(0, 2);
+  return (
+    <div className="mx-2 flex h-32 w-32 shrink-0 flex-col items-center justify-center rounded-2xl bg-white p-3 text-center shadow-md">
+      <div
+        className="flex h-12 w-12 items-center justify-center rounded-xl font-display text-lg font-black text-white"
+        style={{
+          background: `linear-gradient(135deg, hsl(${(i * 41) % 360}, 65%, 55%), hsl(${(i * 41 + 60) % 360}, 65%, 42%))`,
+        }}
+      >
+        {initials}
+      </div>
+      <p className="mt-2 text-[10px] font-bold uppercase tracking-wide text-gray-700">
+        {name}
+      </p>
+    </div>
+  );
+}
+
 export function ClientsGrid() {
+  const loop = [...CLIENTS, ...CLIENTS];
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -17,33 +37,13 @@ export function ClientsGrid() {
             CLIENTS
           </span>
         </h2>
+      </div>
 
-        <div className="mt-12 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6">
-          {CLIENTS.map((name, i) => {
-            const initials = name
-              .split(" ")
-              .map((s) => s[0])
-              .join("")
-              .slice(0, 2);
-            return (
-              <div
-                key={name}
-                className="group flex aspect-square flex-col items-center justify-center rounded-2xl bg-white p-3 text-center transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_oklch(0.72_0.19_240/0.6)]"
-              >
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-lg font-display text-xl font-black text-white"
-                  style={{
-                    background: `linear-gradient(135deg, hsl(${(i * 41) % 360}, 60%, 55%), hsl(${(i * 41 + 60) % 360}, 60%, 40%))`,
-                  }}
-                >
-                  {initials}
-                </div>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-wide text-gray-700">
-                  {name}
-                </p>
-              </div>
-            );
-          })}
+      <div className="relative mt-12 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="flex w-max animate-clients-marquee">
+          {loop.map((n, i) => (
+            <Card key={`${n}-${i}`} name={n} i={i % CLIENTS.length} />
+          ))}
         </div>
       </div>
     </section>

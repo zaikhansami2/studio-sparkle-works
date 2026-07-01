@@ -56,20 +56,20 @@ export function SamiaChatWidget() {
 
   return (
     <>
-      {/* Floating trigger — bottom LEFT per spec */}
+      {/* Floating trigger — bottom RIGHT */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-3 rounded-full border border-primary/40 bg-card/90 px-4 py-3 shadow-[0_0_30px_oklch(0.72_0.19_240/0.5)] backdrop-blur transition-transform hover:scale-105"
+        className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full border border-primary/40 bg-card/90 px-3 py-2 shadow-[0_0_25px_oklch(0.72_0.19_240/0.5)] backdrop-blur transition-transform hover:scale-105"
         aria-label="Chat with Samia"
       >
         <div className="relative">
-          <img src={samiaLogo.url} alt="Samia" className="h-8 w-8 rounded-full" />
-          <span className="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_8px_oklch(0.72_0.19_240)]" />
+          <img src={samiaLogo.url} alt="Samia" className="h-6 w-6 rounded-full" />
+          <span className="absolute -right-0.5 -bottom-0.5 h-2 w-2 rounded-full bg-primary shadow-[0_0_6px_oklch(0.72_0.19_240)]" />
         </div>
-        <span className="pr-1 text-sm font-semibold">
+        <span className="pr-1 text-xs font-semibold">
           {open ? "Close" : "Chat with Samia"}
         </span>
-        {open ? <X className="h-4 w-4" /> : <MessageCircle className="h-4 w-4 text-primary" />}
+        {open ? <X className="h-3.5 w-3.5" /> : <MessageCircle className="h-3.5 w-3.5 text-primary" />}
       </button>
 
       <AnimatePresence>
@@ -79,7 +79,7 @@ export function SamiaChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 left-6 z-50 flex h-[560px] w-[380px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-2xl border border-primary/40 bg-card shadow-[0_0_60px_oklch(0.72_0.19_240/0.5)]"
+            className="fixed bottom-20 right-5 z-50 flex h-[440px] w-[320px] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-primary/40 bg-card shadow-[0_0_50px_oklch(0.72_0.19_240/0.5)]"
           >
             {/* Header */}
             <div className="flex items-center gap-3 border-b border-border bg-background/50 p-4">
