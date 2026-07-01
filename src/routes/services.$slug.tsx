@@ -91,7 +91,7 @@ function ServicePage() {
 
         {/* Sections */}
         <div className="mx-auto max-w-3xl px-6 py-16">
-          {service.sections.map((sec, i) => (
+          {service.sections.map((sec: (typeof service.sections)[number], i: number) => (
             <section key={i} className="mb-16">
               <h2 className="font-display text-3xl font-black uppercase tracking-tight sm:text-4xl">
                 <span className="text-primary">0{i + 1}.</span> {sec.heading}
