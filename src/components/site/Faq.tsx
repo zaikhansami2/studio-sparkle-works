@@ -1,57 +1,39 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
 const FAQS = [
-  {
-    q: "Where is Samia Studios based?",
-    a: "We're headquartered in Hyderabad, Pakistan and work with clients across 10+ countries.",
-  },
-  {
-    q: "What services do you offer?",
-    a: "Website Development, Social Media Management, Website SEO (only for sites we build), Landing Pages, SaaS Software, and E-commerce Stores.",
-  },
-  {
-    q: "Do you offer SEO for websites you didn't build?",
-    a: "No. We only optimize sites we built ourselves so we can guarantee results end-to-end.",
-  },
-  {
-    q: "How long does a typical project take?",
-    a: "A landing page ships in 1–2 weeks, a full website in 3–6 weeks, and SaaS builds run 8–16 weeks depending on scope.",
-  },
-  {
-    q: "How do I get a quote?",
-    a: "Tap 'Get Free Consultation' or ping Samia (the chat button bottom-left) with your requirements and we'll come back within a working day.",
-  },
-  {
-    q: "What are your office hours?",
-    a: "Monday to Friday, 10 AM – 6 PM PKT. Visitors are welcome for a chai and strategy chat.",
-  },
+  { q: "Where is Samia Studios based?", a: "Hyderabad, Pakistan — serving 10+ countries." },
+  { q: "What services do you offer?", a: "Websites, Social Media, SEO (own builds), Landing Pages, SaaS, E-commerce." },
+  { q: "Do you SEO other sites?", a: "No — only sites we build ourselves." },
+  { q: "Project timelines?", a: "Landing 1–2w · Website 3–6w · SaaS 8–16w." },
+  { q: "How to get a quote?", a: "Tap 'Get Free Consultation' or ping Samia in the chat." },
+  { q: "Office hours?", a: "Mon–Fri · 10 AM – 6 PM PKT. Chai on the house." },
 ];
 
+function FaqCard({ q, a }: { q: string; a: string }) {
+  return (
+    <div className="mx-3 flex h-40 w-80 shrink-0 flex-col justify-between rounded-2xl border border-border bg-card p-5">
+      <p className="font-display text-base font-bold text-primary">{q}</p>
+      <p className="text-sm text-muted-foreground">{a}</p>
+    </div>
+  );
+}
+
 export function Faq() {
+  const loop = [...FAQS, ...FAQS];
   return (
     <section className="px-6 py-24">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-6xl">
         <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-primary">
           Answers
         </p>
         <h2 className="mt-4 text-center font-display text-5xl font-black uppercase tracking-tight sm:text-6xl">
           FA<span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Q</span>
         </h2>
-        <Accordion type="single" collapsible className="mt-12">
-          {FAQS.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-border">
-              <AccordionTrigger className="text-left font-display text-lg font-semibold hover:text-primary hover:no-underline">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-            </AccordionItem>
+      </div>
+      <div className="relative mt-12 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="marquee-track flex w-max">
+          {loop.map((f, i) => (
+            <FaqCard key={i} q={f.q} a={f.a} />
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );
